@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "libreoffice-convert": "^1.4.1"
+    "custom-soffice-to-pdf": "^1.0.0"
   }
 }
