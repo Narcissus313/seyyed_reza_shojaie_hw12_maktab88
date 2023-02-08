@@ -1,5 +1,5 @@
 {
-  "name": "pdf_convertor",
+  "name": "1_2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "custom-soffice-to-pdf": "^1.0.0"
+    "docx-pdf": "^0.0.1"
   }
 }
