@@ -16,7 +16,7 @@ let inputSearchBarValue;
 let numberOfCardsPerPage = 6;
 let currentPage = 1;
 
-let lastUsers = [];
+let targetUsers = [];
 let usersData = [];
 let newId;
 
@@ -36,7 +36,7 @@ async function showUsers() {
 	// console.log(name);
 	usersData = await fetchUserData();
 	// console.log(name);
-	lastUsers = usersData;
+	targetUsers = usersData;
 	newId = calculateNewId();
 	renderUsersList(usersData);
 }
@@ -44,7 +44,7 @@ showUsers();
 // name = "mammad";
 
 function calculateNewId() {
-	let ids = lastUsers.map((user) => user.id);
+	let ids = targetUsers.map((user) => user.id);
 	let max = Math.max.apply({}, ids);
 	return max + 1;
 }
@@ -76,11 +76,11 @@ function searchInUsers(value) {
 	if (!filteredUsers.length) {
 		usersListRow.innerHTML = `<h1 style="color:red;">Unfortunately Nothing found!!</h1>`;
 		pagesUl.innerHTML = "";
-		lastUsers = usersData;
+		targetUsers = usersData;
 		return;
 	}
-	lastUsers = filteredUsers;
-	renderUsersList(lastUsers);
+	targetUsers = filteredUsers;
+	renderUsersList(targetUsers);
 }
 
 btnSearch.addEventListener("click", () => searchInUsers(inputSearchBarValue));
@@ -88,9 +88,9 @@ btnSearch.addEventListener("click", () => searchInUsers(inputSearchBarValue));
 inputSearchbar.addEventListener("keyup", function (e) {
 	inputSearchBarValue = inputSearchbar.value;
 	if (inputSearchBarValue === "") {
-		lastUsers = usersData;
+		targetUsers = usersData;
 		currentPage = 1;
-		renderUsersList(lastUsers);
+		renderUsersList(targetUsers);
 	}
 	if (e.key === "Enter") searchInUsers(inputSearchBarValue);
 });
@@ -111,7 +111,7 @@ pagesUl.addEventListener("click", function (e) {
 	}
 	e.target.parentElement.className += " active";
 	currentPage = +e.target.innerText;
-	renderUsersList(lastUsers);
+	renderUsersList(targetUsers);
 });
 
 form.addEventListener("submit", formPreventFromRefresh);
