@@ -4,6 +4,9 @@ require("dotenv").config();
 
 async function main() {
 	const transporter = nodemailer.createTransport({
+		host: "smtp.gmail.com",
+		port: 465,
+		secure: true,
 		service: "gmail",
 		auth: {
 			user: process.env.user,
@@ -19,7 +22,7 @@ async function main() {
 		html: "<b style='color:red;'>Hello world</b>",
 	});
 
-	console.log("Message sent: %s", info.accepted.join(' '));
+	console.log("Message sent: %s", info.accepted.join(" "));
 }
 
 main().catch(console.error);

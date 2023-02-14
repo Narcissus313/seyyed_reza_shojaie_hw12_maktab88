@@ -6,15 +6,22 @@ export const updateUser = (userId, userData) => {
 		.then((data) => {
 			data = JSON.parse(data);
 			let targetUser = data.find((user) => user["uid"] === userId);
-
+			if (!targetUser) {
+				console.log("no such user exists");
+				return;
+			}
 			if (validteToUpdateUser(data, userData)) {
 				for (const param of Object.keys(userData)) {
-					// if (param === "uid") continue;
 					targetUser[param] = userData[param];
 				}
-				return writeToFilePromise("./tmp.json", JSON.stringify(data));
+				writeToFilePromise("./tmp.json", JSON.stringify(data));
+				return userId;
 			}
 		})
-		.then((log) => console.log(log))
-		.catch((err) => console.log(err));
+		.then((userId) => {
+			if (userId) console.log(`user with uid-->${userId} data updated`);
+		})
+		.catch((err) => {
+			console.log(`error: ${err}`);
+		});
 };

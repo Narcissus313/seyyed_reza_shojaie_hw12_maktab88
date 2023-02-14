@@ -7,8 +7,12 @@ export const createNewUser = (newUser) => {
 			data = JSON.parse(data);
 			if (validteToCreateUser(data, newUser)) {
 				data.push(newUser);
-				return writeToFilePromise("./tmp.json", JSON.stringify(data));
+				writeToFilePromise("./tmp.json", JSON.stringify(data));
+				return newUser;
 			}
+		})
+		.then((newUser) => {
+			console.log(`user with uid-->${newUser.uid} wrote`);
 		})
 		.catch((err) => console.log(err));
 };

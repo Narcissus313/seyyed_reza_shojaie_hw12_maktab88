@@ -31,17 +31,13 @@ async function fetchUserData() {
 	return users;
 }
 
-// let name = "reza";
 async function showUsers() {
-	// console.log(name);
 	usersData = await fetchUserData();
-	// console.log(name);
 	targetUsers = usersData;
 	newId = calculateNewId();
 	renderUsersList(usersData);
 }
 showUsers();
-// name = "mammad";
 
 function calculateNewId() {
 	let ids = targetUsers.map((user) => user.id);

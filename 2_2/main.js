@@ -4,7 +4,7 @@ import { updateUser } from "./update.js";
 import { deleteUser } from "./delete.js";
 
 const updateUserData = {
-	firstname: "ali",
+	firstname: "al",
 	lastname: "hajili",
 	city: "qom",
 	postalCode: "2345672345",
@@ -12,7 +12,6 @@ const updateUserData = {
 	position: "ux",
 };
 const newUser = {
-	uid: 12,
 	firstname: "reza",
 	lastname: "shojaee",
 	city: "tehran",
@@ -24,4 +23,4 @@ const newUser = {
 // createNewUser(newUser);
 // read("./tmp.json");
 // updateUser(12, updateUserData);
-// deleteUser(12);
+// deleteUser(123);
